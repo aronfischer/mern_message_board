@@ -17,6 +17,12 @@ mongoose.connect(uri, {
   useUnifiedTopology: true
 });
 
+const messagesRouter = require("./routes/messages");
+const usersRouter = require("./routes/users");
+
+app.use("/messages", messagesRouter);
+app.use("/users", usersRouter);
+
 app.listen(port, () => {
   console.log(`Server is running on port: ${port}`);
 });
