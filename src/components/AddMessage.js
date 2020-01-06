@@ -1,55 +1,22 @@
 import React, { Component } from "react";
+import axios from "axios";
 
 export class AddMessage extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      username: "",
-      date: new Date(),
-      message: "",
-      users: ["Aron", "Flo", "Lars"] // eig. aus Datenbank
-    };
-
-    this.onChangeMessage = this.onChangeMessage.bind(this);
-    this.onChangeUser = this.onChangeUser.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
-  }
-
-  onChangeMessage = e => {
-    this.setState({
-      message: e.target.value
-    });
-  };
-
-  onChangeUser = e => {
-    this.setState({
-      username: e.target.value
-    });
-  };
-
-  onSubmit = e => {
-    e.preventDefault();
-    console.log("submitted");
-    console.log(this.state.username);
-    console.log(this.state.message);
-  };
-
   render() {
     return (
       <div>
-        <form action='' onSubmit={this.onSubmit}>
+        <form action='' onSubmit={this.props.onSubmitMessage}>
           <div className='form-group'>
             <label htmlFor='selectUser'>Select a user</label>
             <select
-              onChange={this.onChangeUser}
-              value={this.state.username}
+              onChange={this.props.onChangeUser}
+              value={this.props.username}
               name='selectUser'
               id='selectUser'
               className='form-control'
             >
-              {this.state.users !== []
-                ? this.state.users.map(user => {
+              {this.props.users !== []
+                ? this.props.users.map(user => {
                     return <option key={user}>{user}</option>;
                   })
                 : null}
@@ -58,8 +25,8 @@ export class AddMessage extends Component {
           <div className='form-group'>
             <label htmlFor='message'>Send a message</label>
             <textarea
-              onChange={this.onChangeMessage}
-              value={this.state.message}
+              onChange={this.props.onChangeMessage}
+              value={this.props.message}
               name='message'
               id='message'
               rows='5'

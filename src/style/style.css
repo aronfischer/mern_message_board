@@ -1,0 +1,19 @@
+.af-message-wrapper {
+  background-color: rgba(128, 217, 252, 0.5);
+  width: max-content;
+}
+
+.af-date {
+  font-size: 10px;
+  color: grey;
+}
+
+.af-username {
+  font-style: italic;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.af-message {
+  font-size: 14px;
+}
